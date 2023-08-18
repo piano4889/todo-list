@@ -15,8 +15,8 @@ const TodoForm = () => {
         setInputValue(e.currentTarget.value);
     }
 
-    const onClickHandler = () => {
-
+    const onClickHandler = (e: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+        e.preventDefault();
         if (inputValue.trim() === '') {
             return
         }
@@ -36,12 +36,12 @@ const TodoForm = () => {
     }
     return (
         <div className={styles.content}>
-            <form className={styles.TodoAdd} onSubmit={event => event.preventDefault()}>
+            <form className={styles.TodoAdd} onSubmit={e => onClickHandler(e)}>
                 <input
                     onChange={onChangeHandler}
                     value={inputValue}
                     placeholder={"추가할 할 일을 입력하세요."}/>
-                <button onClick={onClickHandler} type={'button'}>
+                <button onClick={e => onClickHandler(e)} type={'button'}>
                     <FontAwesomeIcon icon={faCirclePlus}/>
                 </button>
             </form>
