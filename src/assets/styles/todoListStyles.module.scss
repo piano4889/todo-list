@@ -183,9 +183,14 @@ html, body {
     font-size: 17px;
     cursor: pointer;
 
-    &.star,
-    &:hover {
+    &.star {
       color: #f0f351;
+    }
+
+    @media (hover: hover) {
+      &:hover{
+        color: #f0f351;
+      }
     }
   }
 
@@ -298,6 +303,7 @@ html, body {
     .remove {
       font-size: 18px;
     }
+
   }
 
 
