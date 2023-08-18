@@ -1,0 +1,293 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MonoplexKRWide-BoldItalic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_Monoplex-wide@1.0/MonoplexKRWide-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html, body {
+  background-color: #BBCDF2;
+  background-image: linear-gradient(rgba(255, 255, 255, .07) 2px, transparent 2px),
+  linear-gradient(90deg, rgba(255, 255, 255, .07) 2px, transparent 2px),
+  linear-gradient(rgba(255, 255, 255, .06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, .06) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+.spring {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1; /* 이미지가 컨텐츠 위에 오도록 설정 */
+}
+
+.TodoTemplate {
+  width: 350px;
+  padding: 40px 50px;
+  margin: 150px auto 0;
+  background-color: #F2F2F2;
+  box-shadow: 8px 8px 15px #2b2a288e;
+
+  .app_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    margin-top: 10px;
+
+    .title{
+      color: #527AF2;
+      font-family: 'MonoplexKRWide-BoldItalic';
+      font-size: 35px;
+      letter-spacing: -1px;
+    }
+    .text {
+      color: #527AF2;
+      font-family: 'MonoplexKRWide-BoldItalic', serif;
+      font-size: 35px;
+      letter-spacing: -1px;
+    }
+
+    .date_area {
+      display: flex;
+      color: #333;
+      font-family: 'SUITE-Regular', serif;
+      margin-right: 5px;
+      font-weight: 700;
+      font-size: 40px;
+
+      .left_col {
+        .day_area, .month_area {
+          margin-right: 5px;
+          font-weight: 700;
+          font-size: 40px;
+        }
+      }
+
+      .right_col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .month_area {
+          font-family: "SUITE-Regular";
+          font-size: 14px;
+          margin-top: 3px;
+        }
+
+        .year_area {
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+}
+
+.TodoAdd {
+  display: flex;
+  padding: 12px 0 20px;
+
+  input {
+    flex: 1;
+    line-height: 1.5;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    color: #333;
+    font-size: 17px;
+    background-color: #F2F2F2;
+
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder,
+    &::placeholder {
+      font-weight: 300;
+    }
+  }
+
+  button {
+    display: flex;
+    padding-right: 0;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+
+    svg {
+      color: #0742F2;
+      font-size: 23px;
+    }
+  }
+}
+
+.TodoObject {
+  display: flex;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+
+  .checkbox {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      font-size: 18px;
+    }
+
+    .star {
+      order: -1;
+    }
+
+    .text {
+      flex: 1;
+      margin-left: 12px;
+    }
+  }
+
+  &.checked {
+    .checkbox {
+      color: #0742F2;
+      font: var(--fa-font-solid);
+
+      .text {
+        color: #888;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .important {
+    display: flex;
+    color: #ccc;
+    font-size: 17px;
+    cursor: pointer;
+
+    &.star,
+    &:hover {
+      color: #f0f351;
+    }
+  }
+
+  .remove {
+    display: flex;
+    margin-left: 5px;
+    color: hsla(0, 100%, 71%, .79);
+    font-size: 21px;
+    cursor: pointer;
+
+    &:hover {
+      color: #ff6b6b;
+    }
+  }
+}
+
+.TodoList {
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  overflow-y: auto;
+
+  button {
+    border: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .TodoTemplate {
+    padding: 20px;
+    margin: 100px auto 0;
+    width: 70%;
+  }
+
+  .spring{
+    display: none;
+  }
+
+  .todoList{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .content{
+    margin-top:20px;
+  }
+  .app_header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .title, .text {
+      font-size: 25px;
+    }
+
+    .date_area {
+      margin-top: 5px;
+
+      .left_col {
+        .day_area, .month_area {
+          font-size: 25px;
+        }
+      }
+
+      .right_col {
+        .month_area {
+          font-size: 12px;
+        }
+
+        .year_area {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .TodoAdd {
+    padding: 10px 0 15px;
+
+    input {
+      font-size: 14px;
+    }
+
+    button svg {
+      font-size: 18px;
+    }
+  }
+
+  .TodoObject {
+    padding: 8px 0;
+
+    .checkbox {
+      svg {
+        font-size: 16px;
+      }
+
+      .text {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
+
+    .remove {
+      font-size: 18px;
+    }
+  }
+
+  .TodoList {
+    height: auto;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
